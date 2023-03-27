@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var aboutRouter = require("./routes/about");
 
+const employeesRouter = require('./routes/api/employees');
+
 var app = express();
 
 // view engine setup
@@ -24,6 +26,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter); // base route
 app.use('/users', usersRouter); // users route
 app.use('/about', aboutRouter); // about route
+
+// Setting up API Endpoints
+app.use("/api/employees", employeesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
