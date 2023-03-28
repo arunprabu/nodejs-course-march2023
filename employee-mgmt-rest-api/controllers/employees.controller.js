@@ -1,6 +1,5 @@
-
 exports.getEmployees = (req, res) => {
-  console.log("reached getEmployees in controller");
+  console.log("reached getEmployees in controller!!!!");
   const employees = [
     {
       id: 1,
@@ -13,10 +12,10 @@ exports.getEmployees = (req, res) => {
       name: "Steve",
       phone: "76865798",
       email: "s@t.com",
-    }
+    },
   ];
   res.json(employees);
-}
+};
 
 exports.createEmployee = (req, res) => {
   console.log("request received");
@@ -55,3 +54,4 @@ exports.updateEmployee = (req, res) => {
   };
   res.json(status);
 };
+

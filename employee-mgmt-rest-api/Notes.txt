@@ -1,0 +1,129 @@
+Employee Management App - CRUD App 
+--
+  1. Create an Employee (CREATE)
+      localhost:3000/api/employees 
+      Http Method: POST
+      Payload: yes 
+
+  2. List Employees (READ)
+      localhost:3000/api/employees
+      Http Method: GET 
+      Payload: no 
+
+  3. Employee Details (READ)
+      localhost:3000/api/employees/<id>
+      Http Method: GET 
+      Payload: no 
+
+  4. Update Employee (UPDATE)
+      localhost:3000/api/employees/<id>
+      Http Method: PUT / PATCH 
+      Payload: yes
+
+  5. Delete Employee (DELETE)
+      localhost:3000/api/employees/<id>
+      Http Method: DELETE
+      Payload: no 
+
+---
+
+Design Pattern: MVC 
+===
+
+
+Databases
+---
+  * Saving data and retrieving the data.
+  1. DB Server 
+      * host / ip address: localhost or 127.0.0.1 
+      * port: ..... 
+      * will be protected db credentials (username and password)
+
+  2. DB Client 
+      3 Types DB Clients
+      ------------------
+        1. Shell Clients or command line clients 
+        2. GUI Clients (MySQL Workbench, HeidiSQL, SQLYog, PHPMyAdmin)
+        3. DB Drivers (Official MySQL Driver, Official MongoDB Driver, MongooseJS)
+
+Types of DB's 
+-----
+  1. Relational DBMS (RDBMS)
+      * Oracle, MySQL, MariaDB, MS-SQL Server, Postgre-SQL
+      * Data will be saved in Tables of the databases
+      * Data will be saved in columns and rows 
+      * Interact with db using Structured Query Language (SQL)
+      * Schema based 
+      * Perfect for Structured data
+
+  2. NoSQL (Not Only SQL)
+      * MongoDB, Amazon DynamoDB, Apache Ignite 
+      * Data will be saved in Collections of the databases
+      * Data will be saved in fields (key and value)
+      * Interact with MongoDB using JavaScript
+      * Schema-less 
+      * Perfect for unstructured data
+
+---
+
+MongoDb commands 
+--
+  to list all dbs (only the dbs with collections will appear)
+    show dbs 
+
+  to know the currently selected db 
+    db 
+
+  to create a new db or to use existing db (this db will be selected as well)
+    use employeeMgmtAppDb
+
+  check the currently selected db 
+    db 
+
+  Create a collection
+    db.createCollection('employees')
+
+  to see all the collections of the selected db 
+    show collections
+
+  CRUD operation begins 
+  --------------------
+    Create (to insert document  // equal to row in mysql )
+    -------
+      db.employees.insert({ name: 'John' })
+      db.employees.insert({ phone: 43256787980, city: 'London'})
+      db.employees.insert({ age: 20 })
+      db.employees.insert( { cities: ['Chennai', 'Toronto', 'Amsterdam']})
+      db.employees.insert( { 
+        address: { 
+          door: 500,
+          street: 'wall street',
+          city: 'NY'
+        }
+      })
+      db.employees.insert({
+        isLoggedIn: false 
+      })
+
+    Read (to list all documents)
+    --------
+      db.employees.find()
+
+    Read (to fetch one document)
+    ---------
+      db.employees.find({ age: 20 })  ---- it will return array of obj 
+
+      db.employees.findOne( { age: 20 })
+
+      db.employees.findOne( {"_id" : ObjectId("6422e6ab47962a1293c72ad7") })
+
+-------------
+    
+
+
+
+
+
+
+
+

@@ -7,7 +7,7 @@ const employeesController = require('../../controllers/employees.controller');
 router.get("/", employeesController.getEmployees);
 
 /* POST -- create employee . */
-router.post("/", employeesController.createEmployee);
+router.post('/', employeesController.createEmployee);
 
 /* GET -- employee details . */
 router.get('/:id', employeesController.getEmployeeById);
