@@ -42,8 +42,8 @@ Databases
   2. DB Client 
       3 Types DB Clients
       ------------------
-        1. Shell Clients or command line clients 
-        2. GUI Clients (MySQL Workbench, HeidiSQL, SQLYog, PHPMyAdmin)
+        1. Shell Clients or command line clients [DONE]
+        2. GUI Clients (MySQL Workbench, HeidiSQL, SQLYog, PHPMyAdmin, Compass, Robo 3T or Studio 3T ) [DONE]
         3. DB Drivers (Official MySQL Driver, Official MongoDB Driver, MongooseJS)
 
 Types of DB's 
@@ -59,12 +59,24 @@ Types of DB's
   2. NoSQL (Not Only SQL)
       * MongoDB, Amazon DynamoDB, Apache Ignite 
       * Data will be saved in Collections of the databases
-      * Data will be saved in fields (key and value)
+      * Data will be saved as documents.. document will be made up of JSON with fields (key and value)
       * Interact with MongoDB using JavaScript
       * Schema-less 
       * Perfect for unstructured data
 
 ---
+
+in windows go to this path 
+cd C:/Program Files/MongoDB/Server/6.x/bin 
+
+Start the DB server 
+---
+  mongod 
+
+Open another cmd prompt -- to launch the mongodb client 
+--
+  mongo 
+
 
 MongoDb commands 
 --
@@ -117,8 +129,20 @@ MongoDb commands
 
       db.employees.findOne( {"_id" : ObjectId("6422e6ab47962a1293c72ad7") })
 
--------------
-    
+    -------------
+
+MongooseJS
+---
+  If we do not want schema, we can use mongodb driver from npmjs.
+  If we want schema, we have to use mongoose driver from npmjs.
+  * Unofficial Driver
+  * offering api's for data modeling 
+  * provides the schema for mongodb 
+  * the syntax of commands or queries will slighltly differ
+
+--------
+
+
 
 
 
