@@ -4,6 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const passport = require('passport');
+var cors = require("cors");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -29,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // setting up auth middleware
 passport.initialize();
 
+app.use(cors());
 app.use('/', indexRouter); // base route
 app.use('/users', usersRouter); // users route
 app.use('/about', aboutRouter); // about route
