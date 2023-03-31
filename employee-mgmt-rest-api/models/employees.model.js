@@ -28,4 +28,5 @@ const employeeSchema = new Schema({
   strict: false // anything other than the above mentioned fields can also be saved.
 });
 
+// Let's make a collection Employee with the employeeSchema
 module.exports = mongoose.model('Employee', employeeSchema);

@@ -3,12 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const passport = require('passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var aboutRouter = require("./routes/about");
 
 const employeesRouter = require('./routes/api/employees');
+const authRouter = require("./routes/api/auth");
+require('./config/passport.config'); // setting up passport 
 
 var app = express();
 
@@ -23,12 +26,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// setting up auth middleware
+passport.initialize();
+
 app.use('/', indexRouter); // base route
 app.use('/users', usersRouter); // users route
 app.use('/about', aboutRouter); // about route
 
 // Setting up API Endpoints
 app.use('/api/employees', employeesRouter);
+app.use("/api/auth", authRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

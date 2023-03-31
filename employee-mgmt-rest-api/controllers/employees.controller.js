@@ -3,21 +3,17 @@ const Employee = require("../models/employees.model");
 
 exports.getEmployees = (req, res) => {
   console.log("reached getEmployees in controller!!!!");
-  const employees = [
-    {
-      id: 1,
-      name: "John",
-      phone: "234534678",
-      email: "j@k.com",
-    },
-    {
-      id: 2,
-      name: "Steve",
-      phone: "76865798",
-      email: "s@t.com",
-    },
-  ];
-  res.json(employees);
+  
+  Employee.find({})
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({
+        message: err.message || 'Some error occurred while fetching employees'
+      });
+    });
 };
 
 exports.createEmployee = (req, res) => {
@@ -42,7 +38,9 @@ exports.createEmployee = (req, res) => {
     })
     .catch( err => {
       console.log(err);
-      res.json(err);
+      res.json({
+        message: err.message || "Some error occurred while adding employee",
+      });
     });
 };
 
@@ -50,13 +48,16 @@ exports.getEmployeeById = (req, res) => {
   console.log("request received");
   // receiving URL Param from req.params
   console.log(req.params);
-  const employee = {
-    id: req.params.id,
-    name: "John",
-    phone: "234534678",
-    email: "j@k.com",
-  };
-  res.json(employee);
+  Employee.findOne({_id: req.params.id})
+    .then((data) => {
+      res.status(200).json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({
+        message: err.message || "Some error occurred while fetching employee",
+      });
+    });
 };
 
 exports.updateEmployee = (req, res) => {
@@ -65,10 +66,15 @@ exports.updateEmployee = (req, res) => {
   console.log(req.params);
   // get the form data from req.body
   console.log(req.body);
-
-  const status = {
-    id: req.params.id,
-    info: "Updated Successfully",
-  };
-  res.json(status);
+  // also try findOneAndUpdate
+  Employee.updateOne({ _id: req.params.id }, req.body)
+    .then((data) => {
+      res.status(201).json(data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.json({
+        message: err.message || "Some error occurred while updating employee",
+      });
+    });
 };

@@ -44,7 +44,7 @@ Databases
       ------------------
         1. Shell Clients or command line clients [DONE]
         2. GUI Clients (MySQL Workbench, HeidiSQL, SQLYog, PHPMyAdmin, Compass, Robo 3T or Studio 3T ) [DONE]
-        3. DB Drivers (Official MySQL Driver, Official MongoDB Driver, MongooseJS)
+        3. DB Drivers (Official MySQL Driver, Official MongoDB Driver, MongooseJS, Sequelize ) [DONE]
 
 Types of DB's 
 -----

@@ -1,5 +1,5 @@
 {
-  "url": "mongodb://localhost:27017/employeeMgmtAppDB",
+  "url": "mongodb://127.0.0.1:27017/employeeMgmtAppDB",
   "username": "",
   "password": "",
   "options": {}

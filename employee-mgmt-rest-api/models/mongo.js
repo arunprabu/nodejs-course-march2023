@@ -23,7 +23,10 @@ mongoose.connection.on("disconnected", () => {
 
 // If the Node Process ends, close the connection
 process.on("SIGINT", () => {
-  mongoose.connection.close();
+  mongoose.connection.close().then(() => {
+    console.log(`Mongoose Connection Closed When app terminated`);
+    process.exit(0);
+  });
 });
 
 module.exports = mongoose;
